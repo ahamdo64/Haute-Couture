@@ -54,13 +54,18 @@
         }
         .header-content { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         
-        /* ===== الشعار ===== */
+        /* ===== الشعار الجديد ===== */
         .logo { display: flex; align-items: center; gap: 15px; }
-        .logo-svg { 
-            width: 80px; 
-            height: auto; 
-            display: block;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        .logo-img { 
+            width: 70px; 
+            height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            transition: var(--transition);
+        }
+        .logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8));
         }
         .logo-text h1 { 
             font-family: var(--font-en); 
@@ -82,19 +87,34 @@
             color: var(--gold); font-size: 1.5rem; cursor: pointer;
         }
 
+        /* ===== أيقونة السلة المحسنة ===== */
         .cart-icon { 
             position: relative; 
             cursor: pointer; 
-            font-size: 1.5rem; 
+            font-size: 1.8rem; 
             transition: var(--transition);
             padding: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
         }
-        .cart-icon:hover { transform: scale(1.1); }
+        .cart-icon:hover { 
+            transform: scale(1.1); 
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow-gold);
+        }
         .cart-count {
-            position: absolute; top: 0; left: 0; background: var(--gold);
-            color: var(--black); font-size: 0.7rem; font-weight: bold;
-            width: 20px; height: 20px; border-radius: 50%;
+            position: absolute; top: -5px; right: -5px; 
+            background: var(--gold);
+            color: var(--black); font-size: 0.75rem; font-weight: bold;
+            width: 22px; height: 22px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--black);
         }
 
         .hero {
@@ -113,11 +133,10 @@
         .hero-text p { font-size: 1.3rem; color: var(--gray); margin-bottom: 10px; }
         .hero-subtitle { font-size: 1rem !important; color: var(--gold) !important; margin-bottom: 30px !important; }
         .hero-logo-large { flex: 1; display: flex; justify-content: center; }
-        .hero-logo-svg {
+        .hero-logo-img {
             width: 100%; max-width: 400px;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.6));
             animation: float 3s ease-in-out infinite;
-            display: block;
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
@@ -187,15 +206,15 @@
         .design-price { font-size: 1.3rem; color: var(--gold-light); font-weight: bold; margin-bottom: 15px; }
         .design-actions { display: flex; gap: 10px; flex-wrap: wrap; }
         .design-actions button {
-            flex: 1; padding: 8px 15px; border: none; border-radius: 8px;
+            flex: 1; padding: 10px 15px; border: none; border-radius: 8px;
             cursor: pointer; font-size: 0.9rem; font-family: var(--font-ar); 
-            transition: var(--transition); min-width: 80px;
+            transition: var(--transition); min-width: 100px; font-weight: 600;
         }
         .btn-cart { background: var(--gold); color: var(--black); }
+        .btn-cart:hover { background: var(--gold-light); transform: translateY(-2px); }
         .btn-download { background: var(--dark); color: var(--white); border: 1px solid var(--gold) !important; }
-        .design-actions button:hover { transform: translateY(-2px); opacity: 0.9; }
+        .btn-download:hover { background: var(--gold); color: var(--black); }
         
-        /* ===== أزرار التحكم للمدير ===== */
         .admin-controls {
             position: absolute;
             top: 10px;
@@ -204,9 +223,7 @@
             gap: 5px;
             z-index: 10;
         }
-        .admin-controls.show { 
-            display: flex !important; 
-        }
+        .admin-controls.show { display: flex !important; }
         .admin-controls button {
             padding: 8px 12px;
             border: none;
@@ -215,10 +232,9 @@
             font-size: 0.9rem;
             transition: var(--transition);
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-weight: 600;
         }
-        .admin-controls button:hover {
-            transform: scale(1.1);
-        }
+        .admin-controls button:hover { transform: scale(1.1); }
 
         .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--gray); font-size: 1.2rem; }
 
@@ -249,7 +265,7 @@
         .checkbox-group label { display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--white); }
         .checkbox-group input[type="checkbox"] { width: auto; cursor: pointer; }
 
-        .cart-section { padding: 80px 0; }
+        .cart-section { padding: 100px 0 80px; min-height: 50vh; }
         .cart-container { max-width: 800px; margin: 0 auto; }
         .cart-items { background: var(--dark-light); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2); }
         .cart-item { display: flex; gap: 15px; padding: 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.1); align-items: center; }
@@ -290,13 +306,12 @@
         .contact-form { background: var(--dark-light); padding: 40px; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.2); }
 
         .footer { background: var(--black); padding: 40px 0; border-top: 1px solid rgba(212, 175, 55, 0.2); text-align: center; }
-        .footer-logo-svg { 
+        .footer-logo-img { 
             width: 120px; 
+            height: 120px;
             margin-bottom: 15px; 
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
         }
         .footer-text { color: var(--gray); margin-bottom: 10px; }
         .footer-location { color: var(--gold); font-size: 0.9rem; }
@@ -322,13 +337,12 @@
             border: 2px solid var(--gold); box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
         }
         .login-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-        .login-logo-svg { 
-            width: 100px; 
+        .login-logo-img { 
+            width: 120px;
+            height: 120px;
             margin-bottom: 15px; 
+            object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
         .login-header h3 { color: var(--gold); font-size: 1.8rem; margin-bottom: 8px; }
         .login-subtitle { color: var(--gray); font-size: 0.95rem; margin: 0; }
@@ -413,7 +427,7 @@
             .mobile-menu-btn { display: block; }
             .hero-content { flex-direction: column-reverse; text-align: center; }
             .hero-text h2 { font-size: 2rem; }
-            .hero-logo-svg { max-width: 250px; }
+            .hero-logo-img { max-width: 250px; }
             .contact-grid { grid-template-columns: 1fr; }
             .categories-grid { grid-template-columns: repeat(2, 1fr); }
             .section-title { font-size: 1.8rem; }
@@ -428,7 +442,7 @@
             .upload-form { padding: 20px; }
             .login-modal { padding: 25px; }
             .login-header h3 { font-size: 1.4rem; }
-            .login-logo-svg { width: 80px; }
+            .login-logo-img { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -439,17 +453,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <svg viewBox="0 0 200 80" class="logo-svg">
-                        <defs>
-                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradient)">S.O</text>
-                        <line x1="10" y1="70" x2="120" y2="70" stroke="url(#goldGradient)" stroke-width="2"/>
-                    </svg>
+                    <!-- ✅ اللوغو كصورة PNG -->
+                    <img src="logo.png" alt="S.O Fashion" class="logo-img" onerror="this.style.display='none'">
                     <div class="logo-text">
                         <h1>S.O Fashion</h1>
                         <p>سارة عمران | تصميم أزياء راقية</p>
@@ -470,7 +475,8 @@
                     </ul>
                 </nav>
 
-                <div class="cart-icon" id="cartIconBtn">
+                <!-- ✅ أيقونة السلة المحسنة -->
+                <div class="cart-icon" id="cartIconBtn" title="اضغط لعرض السلة">
                     <span class="cart-emoji">🛍️</span>
                     <span class="cart-count" id="cartCount">0</span>
                 </div>
@@ -487,17 +493,8 @@
                 <button class="btn btn-primary" onclick="scrollToSection('gallery')">تصفح التصاميم</button>
             </div>
             <div class="hero-logo-large">
-                <svg viewBox="0 0 300 120" class="hero-logo-svg">
-                    <defs>
-                        <linearGradient id="goldGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <text x="15" y="90" font-family="Playfair Display" font-size="90" font-weight="900" fill="url(#goldGradient2)">S.O</text>
-                    <line x1="15" y1="105" x2="180" y2="105" stroke="url(#goldGradient2)" stroke-width="3"/>
-                </svg>
+                <!-- ✅ اللوغو الكبير -->
+                <img src="logo.png" alt="S.O Fashion" class="hero-logo-img" onerror="this.style.display='none'">
             </div>
         </div>
     </section>
@@ -562,7 +559,7 @@
                         </select>
                     </div>
                     <div class="form-group"><label for="designPrice">السعر (اختياري)</label><input type="number" id="designPrice" placeholder="0" min="0" step="0.01"></div>
-                    <div class="form-group checkbox-group"><label><input type="checkbox" id="forSale"><span>هذا التصميم للبيع</span></label></div>
+                    <div class="form-group checkbox-group"><label><input type="checkbox" id="forSale" checked><span>هذا التصميم للبيع</span></label></div>
                     <div class="form-group"><label for="designDescription">وصف التصميم</label><textarea id="designDescription" rows="4" placeholder="أضف وصفاً للتصميم..."></textarea></div>
                     <button type="submit" class="btn btn-primary btn-block"><span class="btn-icon">☁️</span> رفع التصميم</button>
                 </form>
@@ -629,14 +626,20 @@
         </div>
     </section>
 
-    <section id="cart" class="cart-section" style="display: none;">
+    <!-- ✅ قسم السلة - ظاهر دائماً عند النقر -->
+    <section id="cart" class="cart-section">
         <div class="container">
-            <h2 class="section-title">سلة المشتريات</h2>
+            <h2 class="section-title">🛍️ سلة المشتريات</h2>
             <div class="cart-container">
-                <div class="cart-items" id="cartItems"><div class="empty-state"><p>السلة فارغة</p></div></div>
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-state"><p>السلة فارغة - أضف تصاميم من المعرض</p></div>
+                </div>
                 <div class="cart-summary">
-                    <div class="cart-total"><span>المجموع:</span><span id="cartTotal">0</span></div>
-                    <button class="btn btn-primary btn-block" onclick="showCheckoutForm()">إتمام الطلب</button>
+                    <div class="cart-total">
+                        <span>المجموع:</span>
+                        <span id="cartTotal">0 ر.ص</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="checkoutBtn">إتمام الطلب</button>
                 </div>
             </div>
         </div>
@@ -661,16 +664,7 @@
         <div class="modal-content login-modal">
             <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
             <div class="login-header">
-                <svg viewBox="0 0 200 80" class="login-logo-svg">
-                    <defs>
-                        <linearGradient id="goldGradientLogin" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradientLogin)">S.O</text>
-                </svg>
+                <img src="logo.png" alt="S.O" class="login-logo-img" onerror="this.style.display='none'">
                 <h3>🔐 دخول المدير</h3>
                 <p class="login-subtitle">لوحة تحكم S.O Fashion</p>
             </div>
@@ -742,18 +736,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <svg viewBox="0 0 200 80" class="footer-logo-svg">
-                        <defs>
-                            <linearGradient id="goldGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradient3)">S.O</text>
-                    </svg>
-                </div>
+                <img src="logo.png" alt="S.O Fashion" class="footer-logo-img" onerror="this.style.display='none'">
                 <p class="footer-text">S.O Fashion - سارة عمران | جميع الحقوق محفوظة © 2026</p>
                 <p class="footer-location">الصين - فوجيان | sarah1993@hotmail.com</p>
             </div>
@@ -763,8 +746,6 @@
     <div id="toastContainer" class="toast-container"></div>
 
     <script>
-        console.log('🚀 بدء تحميل الموقع...');
-
         const CLOUDINARY_CONFIG = {
             cloudName: 'dogocjhft',
             uploadPreset: 'Fashion so',
@@ -783,7 +764,6 @@
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-        console.log('✅ Firebase تم تهيئته بنجاح');
 
         const ADMIN_CREDENTIALS = {
             username: 'admin',
@@ -802,7 +782,6 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('✅ تم تحميل الصفحة');
             initNavigation();
             initDropZone();
             initUploadForm();
@@ -810,22 +789,21 @@
             initFilterButtons();
             initContactForm();
             initCartIcon();
+            initCheckoutBtn();
             initCategoryCards();
             initLoginForm();
             loadDesigns();
             updateCartCount();
+            renderCart();
             updateAdminUI();
             createAdminIndicator();
             
             if (isAdminLoggedIn) {
                 loadDashboardData();
             }
-            
-            console.log('✅ جميع الوظائف تم تهيئتها');
         });
 
         function initLoginForm() {
-            console.log('🔐 تهيئة نموذج تسجيل الدخول');
             document.getElementById('loginForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const username = document.getElementById('adminUsername').value.trim();
@@ -875,7 +853,6 @@
         }
 
         function updateAdminUI() {
-            console.log('🔄 تحديث واجهة المستخدم - حالة المدير:', isAdminLoggedIn);
             const uploadSection = document.getElementById('upload');
             const dashboardSection = document.getElementById('dashboard');
             const uploadNavLink = document.getElementById('uploadNavLink');
@@ -1029,6 +1006,7 @@
 
                     showToast('تم رفع التصميم بنجاح! ✨', 'success');
                     document.getElementById('uploadForm').reset();
+                    document.getElementById('forSale').checked = true;
                     selectedFile = null;
                     document.getElementById('previewImage').style.display = 'none';
                     document.querySelector('.drop-zone-content').style.display = 'block';
@@ -1065,20 +1043,17 @@
 
         async function loadDesigns() {
             try {
-                console.log('📥 جاري تحميل التصاميم...');
                 const snapshot = await db.collection('designs').orderBy('createdAt', 'desc').get();
                 allDesigns = [];
                 snapshot.forEach(doc => { allDesigns.push({ id: doc.id, ...doc.data() }); });
-                console.log('✅ تم تحميل', allDesigns.length, 'تصميم');
                 renderDesigns();
             } catch (error) {
-                console.error('❌ خطأ في تحميل التصاميم:', error);
+                console.error('Error loading designs:', error);
                 showToast('حدث خطأ في تحميل التصاميم', 'error');
             }
         }
 
         function renderDesigns() {
-            console.log('🎨 عرض التصاميم - حالة المدير:', isAdminLoggedIn);
             const galleryGrid = document.getElementById('galleryGrid');
             const filteredDesigns = currentFilter === 'all' ? allDesigns : allDesigns.filter(d => d.category === currentFilter);
 
@@ -1100,7 +1075,7 @@
                         ${design.forSale && design.price > 0 ? `<p class="design-price">${design.price.toFixed(2)} ر.ص</p>` : ''}
                         ${design.description ? `<p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 10px;">${design.description}</p>` : ''}
                         <div class="design-actions">
-                            ${design.forSale ? `<button class="btn-cart" onclick="addToCart('${design.id}', '${design.name}', '${design.imageUrl}', ${design.price})">🛍️ إضافة للسلة</button>` : ''}
+                            <button class="btn-cart" onclick="addToCart('${design.id}', '${design.name}', '${design.imageUrl}', ${design.price || 0})">🛍️ إضافة للسلة</button>
                             <button class="btn-download" onclick="downloadImage('${design.imageUrl}', '${design.name}')">⬇️ تحميل</button>
                         </div>
                     </div>
@@ -1174,7 +1149,6 @@
         async function loadDashboardData() {
             if (!isAdminLoggedIn) return;
             
-            console.log('📊 تحميل بيانات لوحة التحكم...');
             document.getElementById('totalDesigns').textContent = allDesigns.length;
             
             try {
@@ -1194,10 +1168,8 @@
                 const messagesSnapshot = await db.collection('messages').get();
                 document.getElementById('totalMessages').textContent = messagesSnapshot.size;
                 renderMessagesTable(messagesSnapshot);
-                
-                console.log('✅ تم تحميل بيانات لوحة التحكم');
             } catch (error) {
-                console.error('❌ خطأ في تحميل البيانات:', error);
+                console.error('Error loading dashboard:', error);
             }
         }
 
@@ -1271,79 +1243,87 @@
             });
         }
 
+        // ===== ✅ نظام السلة المحسن =====
         function addToCart(id, name, imageUrl, price) {
-            console.log('🛍️ إضافة للسلة:', name);
             const existingItem = cart.find(item => item.id === id);
             if (existingItem) { 
-                showToast('التصميم موجود بالفعل في السلة', 'info'); 
+                showToast('التصميم موجود بالفعل في السلة 🛍️', 'info'); 
+                scrollToSection('cart');
                 return; 
             }
-            cart.push({ id, name, imageUrl, price });
+            cart.push({ id, name, imageUrl, price: price || 0 });
             saveCart(); 
             updateCartCount();
-            showToast('تمت الإضافة إلى السلة 🛍️', 'success');
+            renderCart();
+            showToast('✅ تمت الإضافة إلى السلة - ' + name, 'success');
+            
+            // انتقال تلقائي للسلة بعد الإضافة
+            setTimeout(() => scrollToSection('cart'), 500);
         }
 
         function removeFromCart(id) {
+            const item = cart.find(i => i.id === id);
             cart = cart.filter(item => item.id !== id);
             saveCart(); 
             updateCartCount(); 
             renderCart();
-            showToast('تمت إزالة العنصر من السلة', 'info');
+            if (item) showToast('تمت إزالة: ' + item.name, 'info');
         }
 
         function saveCart() { 
             localStorage.setItem('cart', JSON.stringify(cart)); 
-            console.log('💾 تم حفظ السلة:', cart.length, 'عناصر');
         }
         
         function updateCartCount() { 
-            document.getElementById('cartCount').textContent = cart.length;
-            console.log('🔢 عدد عناصر السلة:', cart.length);
+            const count = cart.length;
+            document.getElementById('cartCount').textContent = count;
+            document.getElementById('cartCount').style.display = count > 0 ? 'flex' : 'none';
         }
 
         function initCartIcon() {
-            console.log('🛍️ تهيئة أيقونة السلة');
             const cartIconBtn = document.getElementById('cartIconBtn');
             cartIconBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                console.log('🛍️ النقر على أيقونة السلة');
-                const cartSection = document.getElementById('cart');
-                if (cartSection.style.display === 'none' || cartSection.style.display === '') {
-                    cartSection.style.display = 'block';
-                    renderCart();
-                    scrollToSection('cart');
-                } else {
-                    cartSection.style.display = 'none';
-                }
+                scrollToSection('cart');
+            });
+        }
+
+        function initCheckoutBtn() {
+            document.getElementById('checkoutBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                showCheckoutForm();
             });
         }
 
         function renderCart() {
-            console.log('🛍️ عرض السلة - عدد العناصر:', cart.length);
             const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-state"><p>السلة فارغة</p></div>';
-                document.getElementById('cartTotal').textContent = '0';
+                cartItems.innerHTML = '<div class="empty-state"><p>🛍️ السلة فارغة - أضف تصاميم من المعرض</p></div>';
+                cartTotal.textContent = '0 ر.ص';
                 return;
             }
+            
             cartItems.innerHTML = cart.map(item => `
                 <div class="cart-item">
                     <img src="${item.imageUrl}" alt="${item.name}">
                     <div class="cart-item-info">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price.toFixed(2)} ر.ص</div>
+                        <div class="cart-item-price">${(item.price || 0).toFixed(2)} ر.ص</div>
                     </div>
                     <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">🗑️ حذف</button>
                 </div>
             `).join('');
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cartTotal').textContent = total.toFixed(2) + ' ر.ص';
+            
+            const total = cart.reduce((sum, item) => sum + (item.price || 0), 0);
+            cartTotal.textContent = total.toFixed(2) + ' ر.ص';
         }
 
         function showCheckoutForm() {
             if (cart.length === 0) { 
-                showToast('السلة فارغة', 'error'); 
+                showToast('السلة فارغة! أضف تصاميم أولاً', 'error'); 
                 return; 
             }
             document.getElementById('checkoutModal').style.display = 'flex';
@@ -1357,21 +1337,20 @@
                         address: document.getElementById('customerAddress').value
                     },
                     items: cart,
-                    total: cart.reduce((sum, item) => sum + item.price, 0),
+                    total: cart.reduce((sum, item) => sum + (item.price || 0), 0),
                     notes: document.getElementById('orderNotes').value,
                     status: 'pending',
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
                 try {
                     await db.collection('orders').add(orderData);
-                    showToast('تم إرسال طلبك بنجاح! ✨ سنتواصل معك قريباً', 'success');
+                    showToast('✅ تم إرسال طلبك بنجاح! سنتواصل معك قريباً ✨', 'success');
                     cart = []; 
                     saveCart(); 
                     updateCartCount(); 
                     renderCart();
                     closeModal('checkoutModal');
                     document.getElementById('checkoutForm').reset();
-                    document.getElementById('cart').style.display = 'none';
                     if (isAdminLoggedIn) loadDashboardData();
                 } catch (error) {
                     console.error('Error:', error);
@@ -1381,31 +1360,21 @@
         }
 
         function initContactForm() {
-            console.log('📧 تهيئة نموذج التواصل');
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', async (e) => {
+            document.getElementById('contactForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                console.log('📧 إرسال رسالة...');
-                
                 const messageData = {
                     name: document.getElementById('contactName').value,
                     email: document.getElementById('contactEmail').value,
                     message: document.getElementById('contactMessage').value,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
-                
                 try {
-                    console.log('📤 جاري حفظ الرسالة في Firebase...');
                     await db.collection('messages').add(messageData);
-                    console.log('✅ تم حفظ الرسالة بنجاح');
                     showToast('تم إرسال رسالتك بنجاح! ✨', 'success');
-                    contactForm.reset();
-                    
-                    if (isAdminLoggedIn) {
-                        loadDashboardData();
-                    }
+                    document.getElementById('contactForm').reset();
+                    if (isAdminLoggedIn) loadDashboardData();
                 } catch (error) {
-                    console.error('❌ خطأ في إرسال الرسالة:', error);
+                    console.error('Error:', error);
                     showToast('حدث خطأ في إرسال الرسالة: ' + error.message, 'error');
                 }
             });
@@ -1459,11 +1428,6 @@
                 openLoginModal(); 
             }
         });
-
-        console.log('%c✨ S.O Fashion ✨', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
-        console.log('%cسارة عمران - تصميم أزياء راقية', 'color: #F4E5B2; font-size: 14px;');
-        console.log('%c📧 sarah1993@hotmail.com', 'color: #888; font-size: 12px;');
-        console.log('%c🔐 admin / Sarah1993#', 'color: #888; font-size: 12px;');
     </script>
 </body>
 </html>
