@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -42,9 +42,11 @@
                     <ul class="nav-links" id="navLinks">
                         <li><a href="#home" class="active">الرئيسية</a></li>
                         <li><a href="#gallery">المعرض</a></li>
-                        <li><a href="#upload">رفع تصميم</a></li>
+                        <li id="uploadNavLink" style="display: none;"><a href="#upload">رفع تصميم</a></li>
                         <li><a href="#cart">السلة</a></li>
                         <li><a href="#contact">تواصل معنا</a></li>
+                        <li id="loginNavLink"><a href="#" onclick="openLoginModal(); return false;">🔐 دخول المدير</a></li>
+                        <li id="logoutNavLink" style="display: none;"><a href="#" onclick="logoutAdmin(); return false;">🚪 تسجيل الخروج</a></li>
                     </ul>
                 </nav>
 
@@ -140,16 +142,19 @@
             <!-- شبكة التصاميم -->
             <div class="gallery-grid" id="galleryGrid">
                 <div class="empty-state">
-                    <p>لا توجد تصاميم حالياً. ابدأ برفع تصميمك الأول!</p>
+                    <p>لا توجد تصاميم حالياً.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم رفع تصميم -->
-    <section id="upload" class="upload-section">
+    <!-- قسم رفع تصميم - مخفي عن الزوار -->
+    <section id="upload" class="upload-section" style="display: none;">
         <div class="container">
-            <h2 class="section-title">رفع تصميم جديد</h2>
+            <h2 class="section-title">
+                <span class="admin-badge">🔒 لوحة تحكم المدير</span>
+                رفع تصميم جديد
+            </h2>
             <div class="upload-container">
                 <form id="uploadForm" class="upload-form">
                     <!-- منطقة السحب والإفلات -->
@@ -258,6 +263,48 @@
                     <textarea id="orderNotes" rows="2"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">تأكيد الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 🔐 نموذج تسجيل دخول المدير -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-content login-modal">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <div class="login-header">
+                <svg viewBox="0 0 200 80" class="login-logo-svg">
+                    <defs>
+                        <linearGradient id="goldGradientLogin" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradientLogin)">S.O</text>
+                </svg>
+                <h3>🔐 دخول المدير</h3>
+                <p class="login-subtitle">لوحة تحكم S.O Fashion</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label>👩‍💼 اسم المستخدم</label>
+                    <input type="text" id="adminUsername" required placeholder="أدخل اسم المستخدم" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>🔑 كلمة السر</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="adminPassword" required placeholder="أدخل كلمة السر" autocomplete="current-password">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">👁️</button>
+                    </div>
+                </div>
+                <div id="loginError" class="login-error" style="display: none;">
+                    ⚠️ بيانات الدخول غير صحيحة
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-icon">🔓</span>
+                    تسجيل الدخول
+                </button>
+                <p class="login-hint">هذا القسم مخصص لمديرة الموقع فقط</p>
             </form>
         </div>
     </div>
