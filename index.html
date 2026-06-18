@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O Fashion - سارة عمران | أزياء راقية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- شريط التقدم -->
+    <div id="progressBar" class="progress-bar"></div>
+
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- شعار S.O -->
+                <div class="logo">
+                    <svg viewBox="0 0 200 80" class="logo-svg">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradient)">S.O</text>
+                        <line x1="10" y1="70" x2="120" y2="70" stroke="url(#goldGradient)" stroke-width="2"/>
+                    </svg>
+                    <div class="logo-text">
+                        <h1>S.O Fashion</h1>
+                        <p>سارة عمران | تصميم أزياء راقية</p>
+                    </div>
+                </div>
+
+                <!-- قائمة التنقل -->
+                <nav class="nav">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#gallery">المعرض</a></li>
+                        <li><a href="#upload">رفع تصميم</a></li>
+                        <li><a href="#cart">السلة</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </nav>
+
+                <!-- أيقونة السلة -->
+                <div class="cart-icon" id="cartIconBtn">
+                    <span class="cart-emoji">🛍️</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي - Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>اكتشفي أناقتك مع <span class="gold-text">S.O</span></h2>
+                <p>تصاميم حصرية تجمع بين الأصالة والمعاصرة</p>
+                <p class="hero-subtitle">من الصين - فوجيان إلى العالم</p>
+                <button class="btn btn-primary" onclick="scrollToSection('gallery')">تصفح التصاميم</button>
+            </div>
+            <div class="hero-logo-large">
+                <svg viewBox="0 0 300 120" class="hero-logo-svg">
+                    <defs>
+                        <linearGradient id="goldGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <text x="15" y="90" font-family="Playfair Display" font-size="90" font-weight="900" fill="url(#goldGradient2)">S.O</text>
+                    <line x1="15" y1="105" x2="180" y2="105" stroke="url(#goldGradient2)" stroke-width="3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التصنيفات -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">تشكيلاتنا المميزة</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="evening">
+                    <div class="category-icon">🌙</div>
+                    <h3>أزياء السهرة</h3>
+                    <p>فساتين، قفطان ملكي</p>
+                </div>
+                <div class="category-card" data-category="sport">
+                    <div class="category-icon">🏃</div>
+                    <h3>أزياء رياضية</h3>
+                    <p>بدلات رياضية، يوغا</p>
+                </div>
+                <div class="category-card" data-category="chic">
+                    <div class="category-icon">💼</div>
+                    <h3>ستايل شيك</h3>
+                    <p>أنيقة للمكتب واللقاءات</p>
+                </div>
+                <div class="category-card" data-category="casual">
+                    <div class="category-icon">👟</div>
+                    <h3>كاجوال مريح</h3>
+                    <p>جينز، تيشيرتات</p>
+                </div>
+                <div class="category-card" data-category="traditional">
+                    <div class="category-icon">🕌</div>
+                    <h3>تراثي أصيل</h3>
+                    <p>جلابية، عباية، قفطان</p>
+                </div>
+                <div class="category-card" data-category="wedding">
+                    <div class="category-icon">💍</div>
+                    <h3>أعراس وأفراح</h3>
+                    <p>فستان عروس، حنة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المعرض -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">معرض التصاميم</h2>
+            
+            <!-- أزرار الفلترة -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="evening">🌙 السهرة</button>
+                <button class="filter-btn" data-filter="sport">🏃 رياضية</button>
+                <button class="filter-btn" data-filter="chic">💼 شيك</button>
+                <button class="filter-btn" data-filter="casual">👟 كاجوال</button>
+                <button class="filter-btn" data-filter="traditional">🕌 تراثي</button>
+                <button class="filter-btn" data-filter="wedding">💍 أعراس</button>
+            </div>
+
+            <!-- شبكة التصاميم -->
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="empty-state">
+                    <p>لا توجد تصاميم حالياً. ابدأ برفع تصميمك الأول!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم رفع تصميم -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2 class="section-title">رفع تصميم جديد</h2>
+            <div class="upload-container">
+                <form id="uploadForm" class="upload-form">
+                    <!-- منطقة السحب والإفلات -->
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-zone-content">
+                            <span class="drop-icon">📤</span>
+                            <p>اسحب الصورة هنا أو انقر للاختيار</p>
+                            <p class="drop-hint">PNG, JPG, WEBP (حد أقصى 10MB)</p>
+                            <input type="file" id="fileInput" accept="image/*" hidden>
+                        </div>
+                        <img id="previewImage" class="preview-image" style="display: none;">
+                    </div>
+
+                    <!-- حقول النموذج -->
+                    <div class="form-group">
+                        <label for="designName">اسم التصميم *</label>
+                        <input type="text" id="designName" required placeholder="أدخل اسم التصميم">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="designCategory">التصنيف *</label>
+                        <select id="designCategory" required>
+                            <option value="">اختر التصنيف</option>
+                            <option value="evening">🌙 أزياء السهرة</option>
+                            <option value="sport">🏃 أزياء رياضية</option>
+                            <option value="chic">💼 ستايل شيك</option>
+                            <option value="casual">👟 كاجوال مريح</option>
+                            <option value="traditional">🕌 تراثي أصيل</option>
+                            <option value="wedding">💍 أعراس وأفراح</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="designPrice">السعر (اختياري)</label>
+                        <input type="number" id="designPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="forSale">
+                            <span>هذا التصميم للبيع</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="designDescription">وصف التصميم</label>
+                        <textarea id="designDescription" rows="4" placeholder="أضف وصفاً للتصميم..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="btn-icon">☁️</span>
+                        رفع التصميم
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم السلة -->
+    <section id="cart" class="cart-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">سلة المشتريات</h2>
+            <div class="cart-container">
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-state">
+                        <p>السلة فارغة</p>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>المجموع:</span>
+                        <span id="cartTotal">0</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="showCheckoutForm()">
+                        إتمام الطلب
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج إتمام الطلب -->
+    <div id="checkoutModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span>
+            <h3>إتمام الطلب</h3>
+            <form id="checkoutForm" class="checkout-form">
+                <div class="form-group">
+                    <label>الاسم الكامل *</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني *</label>
+                    <input type="email" id="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف *</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>العنوان *</label>
+                    <textarea id="customerAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>ملاحظات إضافية</label>
+                    <textarea id="orderNotes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">تأكيد الطلب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>معلومات التواصل</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>العنوان</strong>
+                            <p>الصين - فوجيان</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👩‍🎨</span>
+                        <div>
+                            <strong>المصممة</strong>
+                            <p>سارة عمران</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">✨</span>
+                        <div>
+                            <strong>البراند</strong>
+                            <p>S.O Fashion</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label>الاسم *</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني *</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>الرسالة *</label>
+                            <textarea id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 200 80" class="footer-logo-svg">
+                        <defs>
+                            <linearGradient id="goldGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#F4E5B2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <text x="10" y="60" font-family="Playfair Display" font-size="60" font-weight="900" fill="url(#goldGradient3)">S.O</text>
+                    </svg>
+                </div>
+                <p class="footer-text">S.O Fashion - سارة عمران | جميع الحقوق محفوظة © 2026</p>
+                <p class="footer-location">الصين - فوجيان</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- إشعارات Toast -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Cloudinary -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
